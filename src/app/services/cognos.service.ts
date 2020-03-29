@@ -31,14 +31,14 @@ export class CognosService {
 					JSON.stringify(
 						{
 							'expiresIn' : 3600,
-							'webDomain' : 'us-south.dynamic-dashboard-embedded.cloud.ibm.com'
+							'webDomain' : 'mybluemix.net'
 							
 						}
 					),
 					{
 						headers: new HttpHeaders()
 						.set('Content-Type', 'application/json')
-						.set('Host', 'us-south.dynamic-dashboard-embedded.cloud.ibm.com')
+						//.set('Host', 'us-south.dynamic-dashboard-embedded.cloud.ibm.com')
 						.set('Authorization', 'Basic ' + btoa(this.credentials.client_id+':'+this.credentials.client_secret))
 					}
 				)

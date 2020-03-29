@@ -15,7 +15,7 @@ export  class LoginComponent implements OnInit {
     isAuthenticaded = false;
 
     constructor(private api : CognosService,
-        private service : LogimnService){}
+       ){}
 
     ngOnInit(){
         //verifica se já existem credenciais ativas
@@ -32,32 +32,26 @@ export  class LoginComponent implements OnInit {
         this.isLoading = true;
 
 
-        this.service.RequestNewSession(obj)
-            .subscribe(
-                s => {console.log(s); this.isAuthenticaded = true;},
-                err => console.log(err)
-            );
-
         //cria uma nova seção do cognos
 
-        // this.api.newSession(obj)
-        //     .subscribe(
-        //         s => {
-        //             //troca a class do login para aprovado 
-        //             this.isAuthenticaded = true;
+        this.api.newSession(obj)
+            .subscribe(
+                s => {
+                    //troca a class do login para aprovado 
+                    this.isAuthenticaded = true;
                     
-        //             //chama a tela para mostrar os datasets
-        //             //TODO
+                    //chama a tela para mostrar os datasets
+                    //TODO
 
-        //             this.api.newCognosInstance();
-        //         },
-        //         err => {
+                    this.api.newCognosInstance();
+                },
+                err => {
 
-        //         console.log(err);
-        //             //troca a classe do login para reprovado
-        //             //TODO
-        //         },
-        //     );
+                console.log(err);
+                    //troca a classe do login para reprovado
+                    //TODO
+                },
+            );
     }
 
 }
