@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <div class="login" [ngClass]="{'loading' : isLoading == true , 'ok' : isAuthenticaded == true}">
+      <p class="title">Log in</p>
+      <input type="text" [(ngModel)]="cognosCredentials" placeholder="Cognos Dashboard Credenciais" id="name" autofocus/>
+      <button (click)="login(cognosCredentials)">
+        <i class="spinner"></i>
+        <div class="state">{{ loginMessage }}</div>
+      </button>
+    </div>
+  </div>

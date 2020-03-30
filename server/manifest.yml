@@ -1,0 +1,13 @@
+---
+applications:
+- instances: 1
+  timeout: 180
+  name: noderedbackend
+  buildpack: sdk-for-nodejs
+  command: npm start
+  disk_quota: 1G
+  memory: 256MB
+  domain: mybluemix.net
+  host: sincrifi-server
+  services:
+    - node-red-backend-cloudant-1585572160837-1565
