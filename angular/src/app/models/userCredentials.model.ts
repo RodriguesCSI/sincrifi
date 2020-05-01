@@ -17,6 +17,7 @@ export class UserCredentials{
 		this.client_secret = c.client_secret;
 		this.iam_apikey_description = c.iam_apikey_description;
 		this.iam_role_crn = c.iam_role_crn;
+		this.iam_apikey_name = c.iam_apikey_name;
 		this.iam_serviceid_crn = c.iam_serviceid_crn;
 	}
 }

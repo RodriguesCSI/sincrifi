@@ -1,0 +1,30 @@
+a{
+	cursor: pointer;
+}
+
+.menu{
+    background-color: #fff;
+}
+
+.disp{
+    display: flex; 
+    flex-flow: no-wrap
+
+}
+
+.card{    
+    width: 180px;
+    height: 180px;
+    margin: 10px;
+	background-color: #FFF;
+	color: black;
+	text-align: center;
+}
+
+.align-layout{
+	position: absolute;
+	left: 50%;
+	margin-left: -464px;
+	top: 50%;
+	margin-top: -232px;
+}

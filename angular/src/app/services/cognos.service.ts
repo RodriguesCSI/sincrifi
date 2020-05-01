@@ -21,31 +21,30 @@ export class CognosService {
 	}
 	
 	//retorna o código http da operação
-	newSession(credentialsObj : string) : Observable<number>{
+	newSession(credentials) : Observable<number>{
 		return new Observable( observer => {
-			this.credentials = new UserCredentials(credentialsObj);
 
 			this.http
 				.post<string>(
-					this.credentials.api_endpoint_url + 'v1/session',
+					'https://sincrifi-server.mybluemix.net/session',
 					JSON.stringify(
 						{
-							'expiresIn' : 3600,
-							'webDomain' : 'mybluemix.net'
-							
+							clientId: this.credentials.client_id,
+							clientSecret: this.credentials.client_secret,
+							webDomain: window.location.href
 						}
+					
 					),
 					{
 						headers: new HttpHeaders()
 						.set('Content-Type', 'application/json')
-						//.set('Host', 'us-south.dynamic-dashboard-embedded.cloud.ibm.com')
-						.set('Authorization', 'Basic ' + btoa(this.credentials.client_id+':'+this.credentials.client_secret))
 					}
 				)
 				.subscribe(// recebe o retorno da seção e já instancia um novo objeto da api
 					s => {
 						this.session = new Session(s);//armazena a nova seção do usuario
 						observer.next(200);
+						console.log(s);
 					},
 					
 					err => {
@@ -57,7 +56,7 @@ export class CognosService {
 			
 	}
 	
-	public newCognosInstance(){
+	public async newCognosInstance(){
 		this.api = new CognosApi({
 						cognosRootURL: this.credentials.api_endpoint_url,
 						sessionCode: this.session.sessionCode,
@@ -65,6 +64,12 @@ export class CognosService {
 						node: document.getElementById('dashboard')
 					});
 
+		await this.api.initialize();
+
 		console.log(this.api.dashboard);
+	}
+
+	public async createNewDashboard(){
+		await this.api.dashboard.createNew();
 	}
 }

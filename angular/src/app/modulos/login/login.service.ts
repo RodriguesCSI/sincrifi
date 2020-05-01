@@ -8,14 +8,14 @@ declare var CognosApi : any;
 
 //irá conter todas as chamadas para a api do Cognos Dashboard
 @Injectable()
-export class LogimnService {
+export class LoginService {
     constructor(private http : HttpClient){}
     
 
     RequestNewSession(credentials) : Observable<any>{
         return this.http
         .post(
-            "http://localhost:51053/api/session",
+            "https://sincrifi-server.mybluemix.net/api/session",
             credentials,
             {
                 headers: new HttpHeaders()
