@@ -28,7 +28,7 @@
     "@covalent/http": "^3.0.1",
     "@covalent/markdown": "^3.0.1",
     "echarts": "^4.7.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "rxjs": "^6.5.4",
     "rxjs-compat": "^6.5.4",
     "rxjs-observable": "0.0.7",
